@@ -66,7 +66,7 @@ function HomeScreen(props) {
   // Title request to the API -------------
 
   useEffect(() => {
-    if(titleRequest != '') {
+    if(titleRequest !== '') {
       requestedMovieListCreation();
     } else {
       popularMovieListCreation();
@@ -88,7 +88,7 @@ function HomeScreen(props) {
     let actualFilmList = [];
     for (let i=0; i < resultObject.results.length; i++) {
       let posterURL;
-      if( resultObject.results[i].poster_path == undefined) {
+      if(resultObject.results[i].poster_path === undefined || resultObject.results[i].poster_path === '') {
         posterURL = 'no-poster.jpg';
       } else {
         posterURL = `https://image.tmdb.org/t/p/w500/${resultObject.results[i].poster_path}`;
@@ -110,7 +110,7 @@ function HomeScreen(props) {
     let actualFilmList = [];
     for (let i=0; i < resultObject.results.length; i++) {
       let posterURL;
-      if( resultObject.results[i].poster_path == undefined) {
+      if(resultObject.results[i].poster_path === undefined || resultObject.results[i].poster_path === '') {
         posterURL = 'no-poster.jpg'
       } else {
         posterURL = `https://image.tmdb.org/t/p/w500/${resultObject.results[i].poster_path}`;

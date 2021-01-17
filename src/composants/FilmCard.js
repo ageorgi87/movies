@@ -81,7 +81,7 @@ function FilmCard(props) {
   return (
     <MovieBlock>
       <div style={{position: "relative"}} onMouseEnter={() => mouseIsOnFilm()} onMouseLeave={() => mouseIsOnFilm()} onClick={() => clickOnMovie()} >
-        <img style={filterFilmPicture === false ? imgStyle : imgHoverStyle} src={props.src} id={props.id} title={props.title}/>
+        <img alt={props.title} style={filterFilmPicture === false ? imgStyle : imgHoverStyle} src={props.src} id={props.id} title={props.title}/>
         <div style={filterFilmPicture === false ? displayNone : titleStyle}>
             <Title>{props.title}</Title>
         </div>

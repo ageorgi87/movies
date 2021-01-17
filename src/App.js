@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+// Imports ****************************************************************************************************
+
+import React from 'react';
+
+// Navigation --------
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import HomeScreen from './screens/HomeScreen';
+import MovieScreen from './screens/MovieScreen';
+
+// Redux -------
+import darkMode from './reducers/lightMode';
+import {Provider} from 'react-redux';
+import {createStore, combineReducers}  from 'redux';
+const store = createStore(combineReducers({darkMode}));
+
+// FUNCTION ************************************************************************************************
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route path="/" exact component={HomeScreen} />
+            <Route path="/movie-*" component={MovieScreen} />
+          </Switch>
+        </Router>
+      </Provider>
   );
-}
+};
+
+// Export *****************************************************************************************************
 
 export default App;
